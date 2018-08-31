@@ -1,0 +1,29 @@
+<!--pages/courses/courses.wxml-->
+<text>pages/courses/courses.wxml</text>
+<view wx:key="1" wx:for="{{coursesInfo}}">  
+  {{index}}
+  <!-- 若点击的是不同的元素，绑定不同的事件，获取的courseDirectionId和courseContentId方式不同
+  (点击clickOnCourseContents  courseDirectionId从缓存取数据,courseContentId从自己取
+  点击course按照courseid，查找数据
+  点击coursedirections  courseDirectionId从自己取，courseContentId设为0
+  ) -->  
+  <view wx:if="{{index=='courseContents'}}">
+       <view  wx:key="1" wx:for="{{item}}"  data-courseContentId="{{item.id}}" bindtap='clickOnCourseContents'>
+           {{index}}{{item.name}}{{item.id}}
+      </view>
+  </view>
+  
+<view wx:if="{{index=='courses'}}">
+       <view  wx:key="1" wx:for="{{item}}"  data-courseId="{{item.id}}" bindtap='clickOnCourses'>
+           {{index}}{{item.name}}{{item.id}}
+      </view>
+  </view>
+
+  <view wx:if="{{index=='courseDirections'}}">
+       <view  wx:key="1" wx:for="{{item}}"  data-courseDirectionId="{{item.id}}"          bindtap='clickOnCourseDirections'>
+           {{index}}{{item.name}}{{item.id}}
+      </view>
+  </view>
+ 
+  <text>\n</text>
+</view>

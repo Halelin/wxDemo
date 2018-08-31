@@ -1,0 +1,6 @@
+<!--pages/info/info.wxml-->
+<text>pages/info/info.wxml</text>
+<view class="userinfo">
+<image src='{{user.avatarUrl}}' class="userinfo-avatar" mode="cover"></image>
+<view class="userinfo-nickname">{{user.nickName}}</view>
+</view>
