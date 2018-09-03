@@ -4,7 +4,7 @@
   autoplay="{{true}}" interval="2000" duration="1000">
   <view wx:key="1" wx:for="{{data.coursedirections}}" data-courseDirectionId='{{item.id}}' bindtap='click'>
     <swiper-item>
-       <image src="{{item.picture_url}}" mode="aspectFill"/> 
+       <image src="{{'http://localhost:8080/ms2/xxx/'+item.picture_url}}" mode="aspectFill"/> 
     </swiper-item>
   </view>
 </swiper>
