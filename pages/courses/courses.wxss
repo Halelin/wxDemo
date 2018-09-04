@@ -1,1 +1,15 @@
 /* pages/courses/courses.wxss */
+.container{
+
+  display: flex;
+
+  flex-direction: row;
+
+  justify-content:space-evenly;
+  flex-wrap:wrap;
+  align-items:baseline;
+  align-content: space-evenly;
+}
+.hover{
+  background-color: gray;
+}

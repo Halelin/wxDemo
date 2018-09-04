@@ -1,6 +1,6 @@
 <!--pages/courses/courses.wxml-->
 <text>pages/courses/courses.wxml</text>
-<view wx:key="1" wx:for="{{coursesInfo}}">  
+<view wx:key="1" wx:for="{{coursesInfo}}" >  
   {{index}}
   <!-- 若点击的是不同的元素，绑定不同的事件，获取的courseDirectionId和courseContentId方式不同
   (点击clickOnCourseContents  courseDirectionId从缓存取数据,courseContentId从自己取
@@ -8,23 +8,23 @@
   点击coursedirections  courseDirectionId从自己取，courseContentId设为0
   )   -->  
   <!--  -->
-  <view wx:if="{{index=='courseContents'}}" bindtap='clickOnCourseContents'>  
-       <view  wx:key="1" wx:for="{{item}}"  data-courseContentId="{{item.id}}" >       
+  <view wx:if="{{index=='courseContents'}}" class="container">  
+       <view  wx:key="1" wx:for="{{item}}"  data-courseContentId="{{item.id}}" bindtap='clickOnCourseContents' hover-class="hover">       
            {{index}}{{item.name}}{{item.id}}         
       </view>
   </view>
   
-<view wx:if="{{index=='courses'}}">
-       <view  wx:key="1" wx:for="{{item}}"  data-courseId="{{item.id}}" bindtap='clickOnCourses'>
+<view wx:if="{{index=='courses'}}" class="container">
+       <view  wx:key="1" wx:for="{{item}}"  data-courseId="{{item.id}}" bindtap='clickOnCourses' hover-class="hover">
            {{index}}{{item.name}}{{item.id}}
       </view>
   </view>
 
-  <view wx:if="{{index=='courseDirections'}}">
-       <view  wx:key="1" wx:for="{{item}}"  data-courseDirectionId="{{item.id}}"          bindtap='clickOnCourseDirections'>
+  <view wx:if="{{index=='courseDirections'}}" class="container">
+       <view  wx:key="1" wx:for="{{item}}"  data-courseDirectionId="{{item.id}}"          bindtap='clickOnCourseDirections' hover-class="hover">
            {{index}}{{item.name}}{{item.id}}
       </view>
   </view>
  
-  <text>\n</text>
+  
 </view>

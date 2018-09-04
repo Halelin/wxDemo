@@ -42,5 +42,8 @@
         "text": "我的"
       }
     ]
+  },
+  "networkTimeout": {
+    "request": 3000
   }
 }
