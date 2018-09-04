@@ -1,4 +1,5 @@
 <!--pages/playmedia/video.wxml-->
 <text>pages/playmedia/video.wxml</text>
-<image src='{{picturesrc}}'/>
- <video id="myVideo" src="{{videosrc}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+<image src="{{'http://localhost:8080/ms2/xxx/'+picturesrc}}"/>
+ <video id="myVideo" src="{{'http://localhost:8080/ms2/xxx/'+videosrc}}" danmu-list="{{danmuList}}" enable-danmu danmu-btn controls></video>
+ <image src="{{'http://localhost:8080/ms2/xxx/'+picturesrc}}"/>

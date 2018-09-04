@@ -67,5 +67,13 @@ App({
   globalData: {
     userInfo: null
   }
+  // onError: function(){
+  //   wx.redirectTo({
+  //     url: '/pages/error/error',
+  //   })
+  // }
+
+
+
 })
 

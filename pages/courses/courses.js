@@ -31,12 +31,21 @@ Page({
           courseContentId: that.data.courseContentId
         },
         success: (res) => {
-          //更新缓存数据
-         // wx.setStorageSync('coursesInfo', res.data)
-         that.setData({
-           coursesInfo:res.data
-         })
-        }
+          console.log(res)
+          if(res.statusCode!=200){
+            wx.redirectTo({
+              url: '/pages/error/error',
+            })
+          }else{
+            console.log("success")
+            //更新缓存数据
+            // wx.setStorageSync('coursesInfo', res.data)
+            that.setData({
+              coursesInfo: res.data
+            })
+          }        
+        },
+      
       })
    
     console.log(that.data.coursesInfo)

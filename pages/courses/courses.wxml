@@ -6,10 +6,11 @@
   (点击clickOnCourseContents  courseDirectionId从缓存取数据,courseContentId从自己取
   点击course按照courseid，查找数据
   点击coursedirections  courseDirectionId从自己取，courseContentId设为0
-  ) -->  
-  <view wx:if="{{index=='courseContents'}}">
-       <view  wx:key="1" wx:for="{{item}}"  data-courseContentId="{{item.id}}" bindtap='clickOnCourseContents'>
-           {{index}}{{item.name}}{{item.id}}
+  )   -->  
+  <!--  -->
+  <view wx:if="{{index=='courseContents'}}" bindtap='clickOnCourseContents'>  
+       <view  wx:key="1" wx:for="{{item}}"  data-courseContentId="{{item.id}}" >       
+           {{index}}{{item.name}}{{item.id}}         
       </view>
   </view>
   
