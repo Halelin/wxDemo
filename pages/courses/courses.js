@@ -28,11 +28,17 @@ Page({
 
     console.log("页面传递的id" + options.courseDirectionId)
     console.log("courseDirectionId" + options.courseContentId)
-      that.setData({
-        //coursesInfo: temp,
-        courseDirectionId: options.courseDirectionId,
-        courseContentId: options.courseContentId
-      })   
+
+    //对于非页面渲染变量不要使用setData,并将界面无关的数据放在data外（page对象中，如this.xxx）提高性能
+      // that.setData({
+      //   //coursesInfo: temp,
+      //   courseDirectionId: options.courseDirectionId,
+      //   courseContentId: options.courseContentId
+      // })   
+    that.courseDirectionId = options.courseDirectionId,
+    that.courseContentId = options.courseContentId
+
+
     that.refrashpage();      
   },
 
@@ -88,15 +94,13 @@ Page({
 //切换课程内容
   clickOnCourseContents:function(e){
     var that =this
-    // wx.redirectTo({
-    //   url: '/pages/courses/courses?courseDirectionId=' + that.data.courseDirectionId
-    //     + '&courseContentId=' + e.currentTarget.dataset.coursecontentid,
+
+    // that.setData({
+    //   //coursesInfo: temp,
+    //   courseDirectionId: that.courseDirectionId,
+    //   courseContentId: e.currentTarget.dataset.coursecontentid
     // })
-    that.setData({
-      //coursesInfo: temp,
-      courseDirectionId: that.data.courseDirectionId,
-      courseContentId: e.currentTarget.dataset.coursecontentid
-    })
+     that.courseContentId = e.currentTarget.dataset.coursecontentid
     that.refrashpage();
 
   },
@@ -124,11 +128,17 @@ Page({
     //     +'&courseContentId=0',
     // })
 
-    that.setData({
-      //coursesInfo: temp,
-      courseDirectionId: e.target.dataset.coursedirectionid,
-      courseContentId:0
-    })
+    // that.setData({
+    //   //coursesInfo: temp,
+    //   courseDirectionId: e.target.dataset.coursedirectionid,
+    //   courseContentId:0
+    // })
+    console.log(" that.courseDirectionId" + that.courseDirectionId)
+    console.log("that.courseContentId" + that.courseContentId)
+    that.courseDirectionId = e.target.dataset.coursedirectionid
+    that.courseContentId =0
+    console.log(" that.courseDirectionId" + that.courseDirectionId)
+    console.log("that.courseContentId" + that.courseContentId)
     that.refrashpage();
   },
 
@@ -142,8 +152,8 @@ Page({
     wx.request({
       url: 'http://localhost:8080/ms2/mainwx/toCourseJson',
       data: {
-        courseDirectionId: that.data.courseDirectionId,
-         courseContentId: that.data.courseContentId
+        courseDirectionId: that.courseDirectionId,
+         courseContentId: that.courseContentId
         // courseContentId:undefined 模拟异常
       },
       success: (res) => {
