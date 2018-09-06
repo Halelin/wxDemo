@@ -65,7 +65,8 @@ App({
   },
 
   globalData: {
-    userInfo: null
+    userInfo: null,
+    version: "3.1.0",
   }
   // onError: function(){
   //   wx.redirectTo({

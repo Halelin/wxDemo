@@ -9,14 +9,12 @@
   </view>
 </swiper>
 
-
-<view>
-  <view wx:key="1" wx:for="{{data.coursedirections}}" data-courseDirectionId='{{item.id}}' bindtap='click' >
-    {{item.id}}
-    {{item.name}}   
-    {{item.picture_url}}
+  <view>
+    <view wx:key="1" wx:for="{{data.coursedirections}}" class="my-item" data-courseDirectionId='{{item.id}}' bindtap='click' >      
+      {{item.name}}      
+    </view>
   </view>
-</view>
+
 
 <button bindtap='openCamera' >openCamera</button>
 <button bindtap='checkSession' >checkSession</button>
