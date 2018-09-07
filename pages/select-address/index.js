@@ -28,14 +28,14 @@ Page({
   },
   
   editAddess: function (e) {
+    console.log(e);
     wx.navigateTo({
-      url: "/pages/address-add/index?id=" + e.currentTarget.dataset.id
+      url: "/pages/address-add/index?index=" + e.currentTarget.dataset.index+"&id="+e.currentTarget.dataset.id
     })
   },
   
   onLoad: function () {
     console.log('onLoad')
-
    
   },
   onShow : function () {
@@ -44,20 +44,26 @@ Page({
   initShippingAddress: function () {
     var that = this;
     wx.request({
-      url: 'https://api.it120.cc/'+ app.globalData.subDomain +'/user/shipping-address/list',
+      url: 'http://localhost:8080/ms2/address/selectAddressByOpenId',
       data: {
-        token: wx.getStorageSync('token')
+        openId: wx.getStorageSync('openid'),
+       // token: wx.getStorageSync('token')
       },
       success: (res) =>{
-        if (res.data.code == 0) {
+        if (res.statusCode == 200){
+          console.log(res.data)
           that.setData({
-            addressList:res.data.data
-          });
-        } else if (res.data.code == 700){
-          that.setData({
-            addressList: null
-          });
+            addressList:res.data
+          })
+          //缓存用户地址
+          wx.setStorageSync('addressList', res.data)
+        }else{
+          wx.redirectTo({
+            url: '/pages/error/error',
+          })
         }
+        
+        
       }
     })
   }

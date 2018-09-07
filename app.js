@@ -24,7 +24,7 @@ App({
             //登陆成功
             success: function (res) {              
               if (res.statusCode == 200) {
-                console.log("获取到的openid为：" + res.data.openid)
+                console.log("获取到的openid为：" + res.data.openid)                
                 wx.setStorageSync('openid', res.data.openid)               
               } else {
                 console.log(res.errMsg)
