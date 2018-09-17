@@ -4,8 +4,7 @@ var app = getApp()
 var hasChange = 0
 var apiCode
 Page({
-  data: {
-    addressData:{},
+  data: {   
     region: ['省/直辖市','市','区']
   },
   bindCancel:function () {
@@ -80,7 +79,7 @@ Page({
       url: 'http://localhost:8080/ms2/address/'+apiCode,
       data: {
         //token: wx.getStorageSync('token'),    
-        id : that.id,
+        id : that.id,//页面
         openId:wx.getStorageSync('openid'),
         isDefault:'false',
         name:name,
@@ -107,7 +106,12 @@ Page({
     console.log(e)
     var that = this;    
     var index = e.index;//index为address的下标
-    that.id = e.id;//id为address主键
+    if(e.id!=undefined){
+      that.id = e.id;//id为address主键
+    }else {
+      that.id =1;//id随便设置的值，再做插入时，为了共用wx.request中的请求字段而id必须注入为integer类型，实际id插入会自增长
+    }
+
     console.log(index+"index")
     console.log(that.id+"id")
     if (index) { 
@@ -146,19 +150,21 @@ Page({
         })
       }      
     }else{
-      apiCode = "save"
-    }    
+      apiCode = "save"//若开始时无初始用户信息，则将保存按钮设置为插入操作
+    }   
   },
   deleteAddress: function (e) {
+    apiCode ="deleteAddressById"
     var that = this;
     var id = e.currentTarget.dataset.id;
+    console.log(id)
     wx.showModal({
       title: '提示',
       content: '确定要删除该收货地址吗？',
       success: function (res) {
         if (res.confirm) {
           wx.request({
-            url: '',
+            url: 'http://localhost:8080/ms2/address/' + apiCode,
             data: {
               token: wx.getStorageSync('token'),
               id: id
@@ -172,6 +178,7 @@ Page({
         }
       }
     })
+  
   },
   readFromWx : function () {
     let that = this;
